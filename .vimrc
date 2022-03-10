@@ -98,7 +98,9 @@ nnoremap <F5> :MundoToggle<CR>
 
 
 " Set a colorscheme... and use truecolor.
-set termguicolors
+" For some reason tgc isn't working right on macos? Investigate more
+" later.
+" set termguicolors
 " disable background theme color - use terminal
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 colorscheme flattened_dark
@@ -130,8 +132,8 @@ let ruby_foldable_groups='def #'
 " set fen
 " Try to fix truecolor through screen
 " set Vim-specific sequences for RGB colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " I want to look in parent directories for ctags.
 set tags=tags;
