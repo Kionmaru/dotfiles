@@ -21,6 +21,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-scriptease'
 Plugin 'mogelbrod/vim-jsonpath'
+Plugin 'govim/govim'
 
 call vundle#end()
 " End Vundle stuff
@@ -49,7 +50,12 @@ endif
 
 
 " I don't want vim mouse integrations.
-set mouse=""
+" set mouse=""
+" I might want them for go lang hints?
+" In fact, you can hold shift to disable mouse integration now, so you
+" can still copy/paste out of vim like it was a normal terminal!
+set mouse=a
+set ttymouse=sgr
 
 
 " autoindent makes life easier.
