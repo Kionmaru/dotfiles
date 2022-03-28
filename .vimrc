@@ -54,8 +54,15 @@ endif
 " I might want them for go lang hints?
 " In fact, you can hold shift to disable mouse integration now, so you
 " can still copy/paste out of vim like it was a normal terminal!
+"
+"
+" Settings for govim/inspired by/etc.
+" See
+" https://github.com/govim/govim/blob/main/cmd/govim/config/minimal.vimrc
 set mouse=a
 set ttymouse=sgr
+set balloondelay=250
+set updatetime=100
 
 
 " autoindent makes life easier.
