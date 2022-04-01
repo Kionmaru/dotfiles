@@ -64,6 +64,17 @@ set ttymouse=sgr
 set balloondelay=250
 set updatetime=100
 
+if has("patch-8.1.1904")
+  set completeopt+=popup
+  set completepopup=align:menu,border:off,highlight:Pmenu
+endif
+
+" This is more generic but still found doing golang stuff so
+" Remapt C-x (switch to completion mode) C-o
+inoremap <C-@> <C-x><C-o>
+inoremap <C-Space> <C-x><C-o>
+" This is for terminals that use null for C-space.
+" End govim stuff
 
 " autoindent makes life easier.
 set autoindent
