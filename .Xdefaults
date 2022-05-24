@@ -1,0 +1,281 @@
+urxvt*depth: 32
+urxvt*borderColor: slategrey
+urxvt*scrollBar: False
+urxvt*saveLines: 5000
+urxvt*termName: rxvt
+urxvt*keysym.Home: \033[1~
+urxvt*keysym.End: \033[4~
+urxvt*font: xft:terminus:pixelsize=12
+urxvt*background: rgba:0000/0000/0200/b800
+urxvt*loginShell: 1
+*.cursorBlink: 1
+*.cursorUnderLine: 1
+!urxvt*foreground: grey
+!urxvt*color8: #3F3F3F
+!urxvt*color1: #DA5651
+!urxvt*color2: #60B48A
+!urxvt*color3: #DFAF8F
+!urxvt*color4: #9AB8D7
+!urxvt*color5: #DC8CC3
+!urxvt*color6: #8CD0D3
+!urxvt*color7: #709080
+!urxvt*color9: #DCA3A3
+!urxvt*color10: #72D5A3
+!urxvt*color11: #F0DFAF
+!urxvt*color12: #94BFF3
+!urxvt*color13: #EC93D3
+!urxvt*color14: #93E0E3
+!urxvt*color15: #FFFFFF
+!
+!urxvt*color12: #4F4FFF
+
+! Black
+!*color0: S_base02
+
+! Dark Grey
+!*color8: S_base03
+
+! Dark Red
+!*color1: S_red
+
+! Red
+!*color9: S_orange
+
+! Dark Green
+!*color2: S_green
+
+! Green
+!*color10: S_base01
+
+! Dark Yello
+!*color3: S_yellow
+
+! Yellow
+!*color11: S_base00
+
+! Dark Blue
+!*color4: S_blue
+
+! Blue
+!*color12: S_base0
+
+! Dark Magenta
+!*color5: S_magenta
+
+! Magenta
+!*color13: S_violet
+
+! DarkCyan
+!*color6: S_cyan
+
+! Cyan
+!*color14: S_base1
+
+! Light Grey
+!*color7: S_base2
+
+! White
+!*color15: S_base3
+
+! --- ~/.Xresources ------------------------------------------------------------
+! ------------------------------------------------------------------------------
+! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
+! --- http://ciembor.github.com/4bit -------------------------------------------
+! ------------------------------------------------------------------------------
+!
+! --- special colors ---
+
+! --- Two sections: urxvt, and everything else.
+! Added urxvt-specific colors because urxvt 9.22 seems to require
+! it be one or the other, and xterm doesn't accept alpha channels.
+!*background: #273f41
+! urxvt*foreground: #b9b4b4
+! 
+! ! --- standard colors ---
+! ! black
+! urxvt*color0: #000000
+! ! bright_black
+! urxvt*color8: #262626
+! ! red
+! urxvt*color1: #a75c5c
+! ! bright_red
+! urxvt*color9: #c59494
+! ! green
+! urxvt*color2: #5ca75c
+! ! bright_green
+! urxvt*color10: #94c594
+! ! yellow
+! urxvt*color3: #a7a75c
+! ! bright_yellow
+! urxvt*color11: #c5c594
+! ! blue
+! urxvt*color4: #5c5ca7
+! ! bright_blue
+! urxvt*color12: #9494c5
+! ! magenta
+! urxvt*color5: #a75ca7
+! ! bright_magenta
+! urxvt*color13: #c594c5
+! ! cyan
+! urxvt*color6: #5ca7a7
+! ! bright_cyan
+! urxvt*color14: #94c5c5
+! ! white
+! urxvt*color7: #d9d9d9
+! ! bright_white
+! urxvt*color15: #ffffff
+! 
+! 
+! ! --- special colors ---
+! !*background: #273f41
+! *foreground: #b9b4b4
+! ! --- standard colors ---
+! ! black
+! *color0: #000000
+! ! bright_black
+! *color8: #262626
+! ! red
+! *color1: #a75c5c
+! ! bright_red
+! *color9: #c59494
+! ! green
+! *color2: #5ca75c
+! ! bright_green
+! *color10: #94c594
+! ! yellow
+! *color3: #a7a75c
+! ! bright_yellow
+! *color11: #c5c594
+! ! blue
+! *color4: #5c5ca7
+! ! bright_blue
+! *color12: #9494c5
+! ! magenta
+! *color5: #a75ca7
+! ! bright_magenta
+! *color13: #c594c5
+! ! cyan
+! *color6: #5ca7a7
+! ! bright_cyan
+! *color14: #94c5c5
+! ! white
+! *color7: #d9d9d9
+! ! bright_white
+! *color15: #ffffff
+
+
+! Solarized color scheme for the X Window System
+!
+! http://ethanschoonover.com/solarized
+
+
+! Common
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+
+! Dark
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+
+! Light
+
+! #define S_base03        #fdf6e3
+! #define S_base02        #eee8d5
+! #define S_base01        #93a1a1
+! #define S_base00        #839496
+! #define S_base0         #657b83
+! #define S_base1         #586e75
+! #define S_base2         #073642
+! #define S_base3         #002b36
+
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+urxvt*background:	rgba:0000/2b00/3600/cb00
+urxvt*foreground:              S_base0
+urxvt*fading:                  40
+urxvt*fadeColor:               S_base03
+urxvt*cursorColor:             S_base1
+urxvt*pointerColorBackground:  S_base01
+urxvt*pointerColorForeground:  S_base1
+
+urxvt*color0:                  S_base02
+urxvt*color1:                  S_red
+urxvt*color2:                  S_green
+urxvt*color3:                  S_yellow
+urxvt*color4:                  S_blue
+urxvt*color5:                  S_magenta
+urxvt*color6:                  S_cyan
+urxvt*color7:                  S_base2
+urxvt*color9:                  S_orange
+urxvt*color8:                  S_base03
+urxvt*color10:                 S_base01
+urxvt*color11:                 S_base00
+urxvt*color12:                 S_base0
+urxvt*color13:                 S_violet
+urxvt*color14:                 S_base1
+urxvt*color15:                 S_base3
+
+
+
+
+! ------------------------------------------------------------------------------
+! --- end of terminal colors section -------------------------------------------
+! ------------------------------------------------------------------------------
+
+
+
+xclock*update: 1
+xclock*Foreground: slate grey
+xclock*Background: black
+xclock*Border: navy blue
+xclock*Mode: analog
+xclock*render: True
+!When XRender is in effect, the following additional resources are understood:
+xclock*majorColor: light grey
+xclock*minorColor: grey
+
+!xterm*depth: 32
+xterm*background: black
+xterm*foreground: grey
+!xterm*color8: #3F3F3F
+!xterm*color1: #DA5651
+!xterm*color2: #60B48A
+!xterm*color3: #DFAF8F
+!xterm*color4: #9AB8D7
+!xterm*color5: #DC8CC3
+!xterm*color6: #8CD0D3
+!xterm*color7: #709080
+!xterm*color9: #DCA3A3
+!xterm*color10: #72D5A3
+!xterm*color11: #F0DFAF
+!xterm*color12: #94BFF3
+!xterm*color13: #EC93D3
+!xterm*color14: #93E0E3
+!xterm*color15: #FFFFFF
+xterm*borderColor: slategrey
+xterm*scrollBar: False
+xterm*saveLines: 5000
+xterm*keysym.Home: \033[1~
+xterm*keysym.End: \033[4~
+xterm*faceName: terminus:size=8
