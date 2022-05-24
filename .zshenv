@@ -1,5 +1,5 @@
 # Always respect history && histfile.
-STFILE=~/.histfile
+HISTFILE=~/.histfile
 HISTSIZE=50000
 SAVEHIST=9223372036854775807
 
