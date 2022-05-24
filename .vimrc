@@ -104,7 +104,7 @@ au BufWritePre * let &bex = '-' . strftime("%s")
 set undodir=~/.vim/undo
 set undofile
 
-" I like mundo, and it's GPL2 so I can use it here! -JMD
+" I like mundo, and it's GPL2 so I can use it here!
 nnoremap <F5> :MundoToggle<CR>
 
 

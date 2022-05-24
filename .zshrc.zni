@@ -6,7 +6,7 @@ zstyle ':completion:*' glob 1
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt 'Assuming %e errors:'
 zstyle ':completion:*' substitute 1
-zstyle :compinstall filename '/home/octagonal/.zshrc'
+zstyle :compinstall filename '/home/${USER}/.zshrc'
 
 autoload -Uz compinit
 compinit
