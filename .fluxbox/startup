@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+xscreensaver &
+xmodmap "~/.Xmodmap"
+urxvtd -q -o -f
+(sleep 10; export fpid="$(pgrep fluxbox)"; while [[ "$(pgrep fluxbox)" == "${fpid}" ]]; do fbsetbg -a -r ~/Pictures/Wallpapers/>/dev/null 2&>1; sleep 300; done;) &
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+
+# Start DBUS session bus:
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+   eval $(dbus-launch --sh-syntax --exit-with-session)
+fi
+
+# Start our compositor here
+xcompmgr -c &
+
+# Also, start power manager
+/usr/bin/xfce4-power-manager
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+# if [[ -z "${SSH_AGENT_PID}" ]] || ! kill -0 ${SSH_AGENT_PID}; then
+# 	/usr/bin/ssh-agent -s > ~/.agent;
+# 	. ~/.agent;
+# 	export SSH_ASKPASS="/usr/libexec/openssh/x11-ssh-askpass"
+# 	/usr/bin/ssh-add
+# fi;
+
+exec fluxbox 
+# or if you want to keep a log:
+# exec fluxbox -log "/home/${USER}/.fluxbox/log"
