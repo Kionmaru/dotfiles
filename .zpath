@@ -1,4 +1,7 @@
 # The $PATH should be in zshenv, but can be reset in /etc/zprofile, so we also set it in .zprofile...
 # Without repeating ourselves.
-export PATH="${HOME}/.local/bin:${PATH}"
+if [[ -e /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi;
 
+export PATH="${HOME}/.local/bin:${HOME}/go/bin:${PATH}"

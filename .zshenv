@@ -2,10 +2,17 @@
 HISTFILE=~/.histfile
 HISTSIZE=50000
 SAVEHIST=9223372036854775807
+# append into history file; save only one command if 2 are
+# common/same/consistent; add timestamps for each entry
+setopt INC_APPEND_HISTORY HIST_IGNORE_DUPS EXTENDED_HISTORY
 
 # Global setopts that we want respected even in non-login, non-interactive scripted shells.
 setopt appendhistory extendedglob notify prompt_subst
 bindkey -v
+
+if [[ -e "${HOME}/.info" ]]; then
+  export TERMINFO="$HOME/.info"
+fi
 
 
 # These LS_COLORS are set up for solarized terminals and may look weird elsewhere.
