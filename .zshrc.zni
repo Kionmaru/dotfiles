@@ -1,0 +1,14 @@
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle ':completion:*' completions 1
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' prompt 'Assuming %e errors:'
+zstyle ':completion:*' substitute 1
+zstyle :compinstall filename '/home/octagonal/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
