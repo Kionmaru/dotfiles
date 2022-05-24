@@ -35,15 +35,13 @@ _setspacer()
 
 # These don't carry through su -; root will need a .zshrc as well.
 # But they do carry through su now that I did it right.
-precmd()
-{ 
-  _setspacer
-}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _setspacer
+
 
 # Exported variables go here.
 # export PS1="%{${_thing1}%* %n@%m: ~% ${_thing2}%}[%* %{$fg[green]%}${STY##*.}%{%b%} %n@%m:%~]%{${_spacer}%G%} "
-_setspacer
-export PS1="%{${_thing1}%* %n@%m: ~% ${_thing2}%}[%* %F%{$fg[green]%}${STY##*.} %n@%m%f:%F%{$fg[yellow]%}%~%f]${_spacer}%G "
+export PS1='%{${_thing1}%* %n@%m: ~% ${_thing2}%}[%* %F%{$fg[green]%}${STY##*.} %n@%m%f:%F%{$fg[yellow]%}%~%f]${_spacer} '
 
 # If we're about to run a command.... Set the title bar
 preexec() { printf "${_thing1}%s${_thing2}" "${1}"; }
