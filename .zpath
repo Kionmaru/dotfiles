@@ -4,4 +4,8 @@ if [[ -e /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi;
 
+for entry in $(find "${HOME}/Library/Python" -maxdepth 2 -iname 'bin' -type d); do
+  export PATH="${entry}:${PATH}"
+done
+
 export PATH="${HOME}/.local/bin:${HOME}/go/bin:${PATH}"
