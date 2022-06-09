@@ -21,10 +21,141 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-scriptease'
 Plugin 'mogelbrod/vim-jsonpath'
-Plugin 'govim/govim'
+" Not compatible with neovim
+" Plugin 'govim/govim'
+Plugin 'rust-lang/rust.vim'
+if has('nvim')
+  Plugin 'neovim/nvim-lspconfig'
+  " Completion framework
+  Plugin 'hrsh7th/nvim-cmp'
+  Plugin 'hrsh7th/cmp-buffer'
+  " LSP completion
+  Plugin 'hrsh7th/cmp-nvim-lsp'
+  " inlay hints, extra features of rust-analyzer
+  Plugin 'simrat39/rust-tools.nvim'
+  " snippet stuff
+  Plugin 'quangnguyen30192/cmp-nvim-ultisnips'
+  " support signatures
+  Plugin 'ray-x/lsp_signature.nvim'
+endif
+
 
 call vundle#end()
 " End Vundle stuff
+
+" neovim lsp stuff
+if has('nvim')
+" TODO: Make this suck less. Factor it into multiple files?
+" Configure LSP through rust-tools.nvim plugin.
+" rust-tools will configure and enable certain LSP features for us.
+" See https://github.com/simrat39/rust-tools.nvim#configuration
+lua <<EOF
+
+-- nvim_lsp object
+local nvim_lsp = require'lspconfig'
+
+local opts = {
+		tools = {
+				autoSetHints = true,
+				hover_with_actions = true,
+				runnables = {
+						use_telescope = true
+				},
+				inlay_hints = {
+						show_parameter_hints = false,
+						parameter_hints_prefix = "",
+						other_hints_prefix = "",
+				},
+		},
+
+		-- all the opts to send to nvim-lspconfig
+		-- these override the defaults set by rust-tools.nvim
+		-- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+		server = {
+				-- on_attach is a callback called when the language server attachs to the buffer
+				-- on_attach = on_attach,
+				settings = {
+						-- to enable rust-analyzer settings visit:
+						-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+						["rust-analyzer"] = {
+								-- enable clippy on save
+								checkOnSave = {
+										command = "clippy"
+								},
+						}
+				}
+		},
+}
+
+require('rust-tools').setup(opts)
+EOF
+
+" Code navigation shortcuts
+" as found in :help lsp
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+
+" Quick-fix
+nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+
+" Setup Completion
+" See https://github.com/hrsh7th/nvim-cmp#basic-configuration
+lua <<EOF
+local cmp = require'cmp'
+cmp.setup({
+	snippet = {
+		expand = function(args)
+				-- vim.fn["vsnip#anonymous"](args.body)
+        vim.fn["UltiSnips#Anon"](args.body)
+		end,
+	},
+	mapping = {
+		['<C-p>'] = cmp.mapping.select_prev_item(),
+		['<C-n>'] = cmp.mapping.select_next_item(),
+		-- Add tab support
+		['<S-Tab>'] = cmp.mapping.select_prev_item(),
+		['<Tab>'] = cmp.mapping.select_next_item(),
+		['<C-d>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.close(),
+		['<CR>'] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Insert,
+			select = true,
+		})
+	},
+
+	-- Installed sources
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = 'ultisnips' },
+		{ name = 'path' },
+		{ name = 'buffer' },
+	},
+})
+require('lsp_signature').setup({
+  bind = true,
+  handler_opts = {
+    border = "rounded"
+    }
+  })
+require'lspconfig'.gopls.setup{}
+EOF
+
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+
+" Goto previous/next diagnostic warning/error
+nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
+endif
+" end neovim lsp stuff
 
 " Don't use pathogen anymore
 " execute pathogen#infect()
@@ -60,12 +191,24 @@ endif
 " See
 " https://github.com/govim/govim/blob/main/cmd/govim/config/minimal.vimrc
 set mouse=a
-set ttymouse=sgr
-set balloondelay=250
+
+" nvim doesn't have ttymouse
+if exists(':ttymouse')
+  set ttymouse=sgr
+endif
+
+" This may be plugin dependent
+if exists(':balloondelay')
+  set balloondelay=250
+endif
+
 set updatetime=100
 
+if has("patch-8.1.1904") || has('nvim')
+  set completeopt+=menuone,noinsert,noselect
+endif
+
 if has("patch-8.1.1904")
-  set completeopt+=popup
   set completepopup=align:menu,border:off,highlight:Pmenu
 endif
 
