@@ -1,4 +1,17 @@
 # This is the file used by zsh's interactive login. Interacty stuff goes here.
+#
+# I would put these in zshenv, but that file is overridden by /etc/zshrc
+# ....
+# Always respect history && histfile.
+HISTFILE=~/.histfile
+HISTSIZE=50000
+SAVEHIST=9223372036854775807
+# append into history file; save only one command if 2 are
+# common/same/consistent; add timestamps for each entry
+setopt INC_APPEND_HISTORY HIST_IGNORE_DUPS EXTENDED_HISTORY
+
+# Global setopts that we want respected even in non-login, non-interactive scripted shells.
+setopt appendhistory extendedglob notify prompt_subst
 
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' completions 1

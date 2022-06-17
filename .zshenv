@@ -1,13 +1,3 @@
-# Always respect history && histfile.
-HISTFILE=~/.histfile
-HISTSIZE=50000
-SAVEHIST=9223372036854775807
-# append into history file; save only one command if 2 are
-# common/same/consistent; add timestamps for each entry
-setopt INC_APPEND_HISTORY HIST_IGNORE_DUPS EXTENDED_HISTORY
-
-# Global setopts that we want respected even in non-login, non-interactive scripted shells.
-setopt appendhistory extendedglob notify prompt_subst
 bindkey -v
 
 if [[ -e "${HOME}/.info" ]]; then
@@ -29,5 +19,5 @@ while sleep 1; do mpv -fs "$(find . -mindepth 1 -type f | sort -R | tail -n 1)" 
 done
 }
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
