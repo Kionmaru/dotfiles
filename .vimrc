@@ -89,6 +89,7 @@ local opts = {
 
 require('rust-tools').setup(opts)
 EOF
+let g:rustfmt_autosave = 1
 
 " Code navigation shortcuts
 " as found in :help lsp
