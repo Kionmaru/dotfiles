@@ -21,6 +21,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-scriptease'
 Plugin 'mogelbrod/vim-jsonpath'
+Plugin 'puremourning/vimspector'
 " Not compatible with neovim
 " Plugin 'govim/govim'
 Plugin 'rust-lang/rust.vim'
@@ -150,7 +151,27 @@ require('lsp_signature').setup({
 require'lspconfig'.gopls.setup{}
 EOF
 
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+lua <<EOF
+  -- lifted from https://github.com/golang/tools/blob/1f10767725e2be1265bef144f774dc1b59ead6dd/gopls/doc/vim.md#imports
+
+  function OrgImports(wait_ms)
+    local params = vim.lsp.util.make_range_params()
+    params.context = {only = {"source.organizeImports"}}
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+    for _, res in pairs(result or {}) do
+      for _, r in pairs(res.result or {}) do
+        if r.edit then
+          vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+        else
+          vim.lsp.buf.execute_command(r.command)
+        end
+      end
+    end
+  end
+EOF
+
+autocmd BufWritePre *.go lua OrgImports(1000)
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
@@ -352,3 +373,16 @@ let g:syntastic_yaml_checkers = ['yamllint']
 " Some bindings for json comprehending
 au FileType json noremap <buffer> <silent> <leader>d :call jsonpath#echo()<CR>
 au FileType json noremap <buffer> <silent> <leader>g :call jsonpath#goto()<CR>
+
+" Some bindings for vimspector
+nnoremap <Leader>dd :call vimspector#Launch()<CR>
+nnoremap <Leader>de :call vimspector#Reset()<CR>
+nnoremap <Leader>dc :call vimspector#Continue()<CR>
+
+nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
+
+nmap <Leader>dk <Plug>VimspectorRestart
+nmap <Leader>dh <Plug>VimspectorStepOut
+nmap <Leader>dl <Plug>VimspectorStepInto
+nmap <Leader>dj <Plug>VimspectorStepOver
