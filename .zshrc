@@ -5,7 +5,7 @@
 # Always respect history && histfile.
 HISTFILE=~/.histfile
 HISTSIZE=500000
-SAVEHIST=9223372036854775807
+SAVEHIST=1000000000000000000
 # append into history file; save only one command if 2 are
 # common/same/consistent; add timestamps for each entry
 setopt INC_APPEND_HISTORY HIST_IGNORE_DUPS EXTENDED_HISTORY
