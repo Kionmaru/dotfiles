@@ -62,3 +62,5 @@ preexec() { printf "${_thing1}%s${_thing2}" "${1}"; }
 # Aliases in general go here.
 alias ls="ls --color=auto -a"
 
+# general functions go here
+ssm() { aws ssm start-session --target "${2}" --profile "${1}" --region us-east-1 }
