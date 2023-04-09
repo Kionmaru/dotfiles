@@ -1,11 +1,3 @@
-# Only one ssh agent per all of me logged in. Restart if dead, i.e. if this is
-# the first login shell
-
-if [[ -z "${SSH_AGENT_PID}" ]] && [[ -z ${SSH_AUTH_SOCK} ]]; then
-        . ~/.agent;
-fi;
-
-
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
