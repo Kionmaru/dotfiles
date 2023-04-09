@@ -51,8 +51,9 @@ endif
 call plug#end()
 " End Plug stuff
 
-" neovim lsp stuff
-if has('nvim')
+" neovim lsp stuff. lsp was added in nvim-0.5, and some stable linuces
+" are still running nvim-0.4.4, so version gate this.
+if has('nvim-0.5')
 " TODO: Make this suck less. Factor it into multiple files?
 " Configure LSP through rust-tools.nvim plugin.
 " rust-tools will configure and enable certain LSP features for us.
