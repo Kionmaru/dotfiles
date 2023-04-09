@@ -9,6 +9,7 @@ fi;
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 if [ -x /root/bin/cwd ]; then
         alias cwd='. /root/bin/cwd'
