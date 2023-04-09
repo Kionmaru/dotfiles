@@ -3,47 +3,53 @@ set nocompatible
 
 " temporarily ft off
 filetype off
-" Vundle stuf
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'simnalamburt/vim-mundo'
-Plugin 'tpope/vim-sensible'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'tpope/vim-flagship'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-jdaddy'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-scriptease'
-Plugin 'mogelbrod/vim-jsonpath'
-Plugin 'puremourning/vimspector'
-Plugin 'leafgarland/typescript-vim'
+" Plug stuff
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+" set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin()
+
+Plug 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'simnalamburt/vim-mundo'
+Plug 'tpope/vim-sensible'
+Plug 'vim-syntastic/syntastic'
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-flagship'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-jdaddy'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-scriptease'
+Plug 'mogelbrod/vim-jsonpath'
+Plug 'puremourning/vimspector'
+Plug 'leafgarland/typescript-vim'
 " Not compatible with neovim
-" Plugin 'govim/govim'
-Plugin 'rust-lang/rust.vim'
+" Plug 'govim/govim'
+Plug 'rust-lang/rust.vim'
 if has('nvim')
-  Plugin 'neovim/nvim-lspconfig'
+  Plug 'neovim/nvim-lspconfig'
   " Completion framework
-  Plugin 'hrsh7th/nvim-cmp'
-  Plugin 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-buffer'
   " LSP completion
-  Plugin 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
   " inlay hints, extra features of rust-analyzer
-  Plugin 'simrat39/rust-tools.nvim'
+  Plug 'simrat39/rust-tools.nvim'
   " snippet stuff
-  Plugin 'quangnguyen30192/cmp-nvim-ultisnips'
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   " support signatures
-  Plugin 'ray-x/lsp_signature.nvim'
+  Plug 'ray-x/lsp_signature.nvim'
 endif
 
 
-call vundle#end()
-" End Vundle stuff
+call plug#end()
+" End Plug stuff
 
 " neovim lsp stuff
 if has('nvim')
