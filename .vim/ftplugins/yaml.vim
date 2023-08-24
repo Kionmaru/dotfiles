@@ -6,3 +6,4 @@ set foldmethod=syntax
 set indentkeys-=0#
 set indentkeys-=<:>
 
+let g:syntastic_yaml_checkers = ['yamllint']

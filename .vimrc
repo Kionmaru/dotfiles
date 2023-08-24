@@ -199,7 +199,7 @@ syntax on
 filetype on " done with Vundle, turn it back on
 filetype plugin indent on
 
-" I like these.
+" I like these. Override in ftplugins if needed.
 set softtabstop=2
 set shiftwidth=2
 set tabstop=2
@@ -209,7 +209,8 @@ set expandtab
 " set shiftwidth=3
 
 " Avoid command-line redraw on every entered character by turning off Arabic
-" shaping (which is implemented poorly).
+" shaping (which is implemented poorly in vim... Or was. Should check
+" if this is still needed.).
 if has('arabic')
 	set noarabicshape
 endif
@@ -379,14 +380,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 " au! UltiSnips_AutoTrigger
-"
-" YAML linting~
-let g:syntastic_yaml_checkers = ['yamllint']
-"
-"
-" Some bindings for json comprehending
-au FileType json noremap <buffer> <silent> <leader>d :call jsonpath#echo()<CR>
-au FileType json noremap <buffer> <silent> <leader>g :call jsonpath#goto()<CR>
 
 " Some bindings for vimspector
 nnoremap <Leader>dd :call vimspector#Launch()<CR>
