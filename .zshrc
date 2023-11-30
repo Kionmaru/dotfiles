@@ -68,6 +68,7 @@ ssm() { aws ssm start-session --target "${2}" --profile "${1}" --region us-east-
 
 killssm() { ps aux | grep ssm | grep botocore | awk '{ print $2 }' | while read pid; do kill ${pid}; done; }
 
+# TODO: This should be a script.
 oncall() {
   while true; do
     if (( $(curl --request GET \
