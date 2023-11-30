@@ -28,7 +28,7 @@ else
 fi;
 # Because we stuff pip and such in a local user installation.
 # And we need our local stuff to override system stuff, basically always
-export PATH=~/.local/bin:~/.local/games:${PATH}
+export PATH=${HOME}/.local/bin:${HOME}/.local/games:${PATH}
 
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -69,3 +69,4 @@ readbook ()
         eject /dev/sr0
 }
 
+. "$HOME/.cargo/env"

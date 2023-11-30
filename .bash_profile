@@ -3,6 +3,7 @@
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
-if [ -f ~/.bashrc ]; then
-        . ~/.bashrc
+if [ -f "${HOME}/.bashrc" ]; then
+        . "${HOME}/.bashrc"
 fi
+. "$HOME/.cargo/env"

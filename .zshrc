@@ -19,7 +19,7 @@ zstyle ':completion:*' glob 1
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt 'Assuming %e errors:'
 zstyle ':completion:*' substitute 1
-zstyle :compinstall filename '/home/${USER}/.zshrc'
+zstyle :compinstall filename '${HOME}/.zshrc'
 
 autoload -Uz compinit
 autoload -U colors
@@ -68,9 +68,14 @@ ssm() { aws ssm start-session --target "${2}" --profile "${1}" --region us-east-
 
 # >>> mamba initialize >>>
 # Well, I've modified it a bit...
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="/home/${USER}/.local/bin/micromamba";
-export MAMBA_ROOT_PREFIX="/home/${USER}/micromamba";
+# !! Contents within this block are NO LONGER managed by 'mamba init' !!
+if [[ "$(uname -o)" == "Darwin" ]]; then
+  export MAMBA_EXE="/opt/homebrew/opt/micromamba/bin/micromamba"
+else
+  export MAMBA_EXE="${HOME}/.local/bin/micromamba";
+fi
+
+export MAMBA_ROOT_PREFIX="${HOME}/micromamba";
 __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"

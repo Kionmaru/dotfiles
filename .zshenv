@@ -25,3 +25,4 @@ export VISUAL=nvim
 if [[ -e ~/.kube/config ]]; then
   export KUBECONFIG=~/.kube/config
 fi
+. "$HOME/.cargo/env"
