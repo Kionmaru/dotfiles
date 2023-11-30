@@ -66,6 +66,22 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # general functions go here
 ssm() { aws ssm start-session --target "${2}" --profile "${1}" --region us-east-1 }
 
+killssm() { ps aux | grep ssm | grep botocore | awk '{ print $2 }' | while read pid; do kill ${pid}; done; }
+
+oncall() {
+  while true; do
+    if (( $(curl --request GET \
+      --url "https://api.pagerduty.com/incidents?total=true&user_ids[]=$(cat ${HOME}/.config/pd/user_id)" \
+      --header 'Accept: application/json' \
+      --header "Authorization: $(cat ${HOME}/.config/pd/token)" \
+      --header 'Content-Type: application/json' -s | jq .total) != 0 ));
+    then
+      ffplay ${HOME}/.config/pd/"Time to Wake After Midnight.mp3" -loop 0 -nodisp;
+    fi;
+    sleep 5;
+  done
+}
+
 # >>> mamba initialize >>>
 # Well, I've modified it a bit...
 # !! Contents within this block are NO LONGER managed by 'mamba init' !!

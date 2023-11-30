@@ -155,6 +155,11 @@ cmp.setup({
 		{ name = 'path' },
 		{ name = 'buffer' },
 	},
+
+  -- Don't automatically show completion window
+  completion = {
+    autocomplete = false,
+  },
 })
 require('lsp_signature').setup({
   bind = true,
@@ -241,9 +246,9 @@ endif
 
 set updatetime=100
 
-if has("patch-8.1.1904") || has('nvim')
-  set completeopt+=menuone,noinsert,noselect
-endif
+" if has("patch-8.1.1904") || has('nvim')
+"   set completeopt+=menuone,noinsert,noselect
+" endif
 
 if has("patch-8.1.1904")
   set completepopup=align:menu,border:off,highlight:Pmenu
