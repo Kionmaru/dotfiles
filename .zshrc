@@ -73,11 +73,12 @@ oncall() {
     if (( $(curl --request GET \
       --url "https://api.pagerduty.com/incidents?total=true&user_ids[]=$(cat ${HOME}/.config/pd/user_id)" \
       --header 'Accept: application/json' \
-      --header "Authorization: $(cat ${HOME}/.config/pd/token)" \
+      --header "Authorization: Token $(cat ${HOME}/.config/pd/token)" \
       --header 'Content-Type: application/json' -s | jq .total) != 0 ));
     then
       ffplay ${HOME}/.config/pd/"Time to Wake After Midnight.mp3" -loop 0 -nodisp;
     fi;
+    echo "$(date): Checked for open incidents, found none.";
     sleep 5;
   done
 }
