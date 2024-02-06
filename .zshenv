@@ -26,3 +26,11 @@ if [[ -e ~/.kube/config ]]; then
   export KUBECONFIG=~/.kube/config
 fi
 . "$HOME/.cargo/env"
+
+if [[ -d ~/.local/zsh ]]; then
+  for entry in ~/.local/zsh/*.zsh; do
+    if [[ -f "${entry}" ]]; then
+      source ${entry};
+    fi;
+  done;
+fi;
