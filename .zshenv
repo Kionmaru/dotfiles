@@ -22,13 +22,16 @@ done
 export EDITOR=nvim
 export VISUAL=nvim
 
-if [[ -e ~/.kube/config ]]; then
-  export KUBECONFIG=~/.kube/config
+if [[ -e ${HOME}/.kube/config ]]; then
+  export KUBECONFIG=${HOME}/.kube/config
 fi
-. "$HOME/.cargo/env"
 
-if [[ -d ~/.local/zsh ]]; then
-  for entry in ~/.local/zsh/*.zsh; do
+if [[ -f ${HOME}/.cargo/env ]]; then
+  . "${HOME}/.cargo/env"
+fi;
+
+if [[ -f ${HOME}/.local/zsh/* ]]; then
+  for entry in ${HOME}/.local/zsh/*.zsh; do
     if [[ -f "${entry}" ]]; then
       source ${entry};
     fi;
