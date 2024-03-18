@@ -84,6 +84,21 @@ oncall() {
   done
 }
 
+# Just... fuck it... grab a current neovim and dump it to .local
+# Should almost never need to run this; so comment it out entirely by
+# default
+# linux-local-stable-neovim() {
+#   curl https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz -L --output - | gzip -cd - | tar xf - --strip-components=1 -C ${HOME}/.local/
+# }
+
+# Playing with new neovim config
+knvim() {
+  alias  nvim='NVIM_APPNAME="nvim-kickstart" nvim'
+}
+
+unknvim() {
+  unalias nvim
+}
 # >>> mamba initialize >>>
 # Well, I've modified it a bit...
 # !! Contents within this block are NO LONGER managed by 'mamba init' !!

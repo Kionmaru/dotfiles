@@ -80,6 +80,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# If you need to, you can move entire workspaces
+bindsym $mod+Shift+Ctrl+h move workspace to output left
+bindsym $mod+Shift+Ctrl+j move workspace to output down
+bindsym $mod+Shift+Ctrl+k move workspace to output up
+bindsym $mod+Shift+Ctrl+l move workspace to output right
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -102,6 +108,9 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# handle monitor layout changes
+bindsym $mod+m exec --no-startup-id autorandr --change
 
 # focus the child container
 #bindsym $mod+d focus child
