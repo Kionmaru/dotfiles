@@ -191,3 +191,9 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# Lastly, include any machine-specific i3 files (allow for snowflake customization)
+include ${HOME}/.config/i3/`hostname`.conf
+
+# Include config fragments which may exist in the future
+include ${HOME}/.config/i3/config.d/*conf
