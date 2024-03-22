@@ -34,6 +34,7 @@ return {
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
     },
     config = function()
       -- See `:help cmp`
@@ -51,7 +52,7 @@ return {
         -- autocomplete = false in these options. ->rvn<-
         completion = {
           completeopt = 'menu,menuone,noinsert',
-          autocomplete = false,
+          -- autocomplete = false,
         },
 
         -- For an understanding of why these mappings were
@@ -72,10 +73,10 @@ return {
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
           ['<C-y>'] = cmp.mapping.confirm { select = true },
-          ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-          },
+          -- ['<CR>'] = cmp.mapping.confirm {
+          --   behavior = cmp.ConfirmBehavior.Insert,
+          --   select = true,
+          -- },
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
@@ -105,6 +106,7 @@ return {
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
         sources = {
+          { name = 'nvim_lsp_signature_help' },
           { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
