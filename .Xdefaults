@@ -6,7 +6,7 @@ urxvt*termName: rxvt
 urxvt*keysym.Home: \033[1~
 urxvt*keysym.End: \033[4~
 urxvt*font: xft:terminus:pixelsize=12
-urxvt*background: rgba:0000/0000/0200/b800
+! urxvt*background: rgba:0000/0000/0200/b800
 urxvt*loginShell: 1
 *.cursorBlink: 1
 *.cursorUnderLine: 1
@@ -88,7 +88,7 @@ urxvt*loginShell: 1
 
 ! --- Two sections: urxvt, and everything else.
 ! Added urxvt-specific colors because urxvt 9.22 seems to require
-! it be one or the other, and xterm doesn't accept alpha channels.
+! it be one or the other, and xterm does not accept alpha channels.
 !*background: #273f41
 ! urxvt*foreground: #b9b4b4
 ! 
@@ -279,3 +279,4 @@ xterm*saveLines: 5000
 xterm*keysym.Home: \033[1~
 xterm*keysym.End: \033[4~
 xterm*faceName: terminus:size=8
+Xcursor.size: 16
