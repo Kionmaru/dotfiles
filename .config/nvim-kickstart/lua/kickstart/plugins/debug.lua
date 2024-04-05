@@ -11,6 +11,8 @@ return {
   'mfussenegger/nvim-dap',
   -- NOTE: And you can specify dependencies as well
   dependencies = {
+    -- async io plugin needed for dap ui
+    'nvim-neotest/nvim-nio',
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
 
@@ -83,5 +85,12 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+
+    -- Add some lldb
+    dap.adapters.lldb = {
+      type = 'executable',
+      command = 'lldb-vscode',
+      name = '/usr/bin/lldb',
+    }
   end,
 }
