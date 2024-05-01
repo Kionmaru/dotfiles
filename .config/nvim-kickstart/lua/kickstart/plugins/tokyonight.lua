@@ -7,6 +7,12 @@ return {
     'folke/tokyonight.nvim',
     priority = 1000, -- make sure to load this before all the other start plugins
     init = function()
+      -- Vertsplit character │ is not visible unless we set something here
+      require('tokyonight').setup {
+        on_colors = function(c)
+          c.border = c.border_highlight
+        end,
+      }
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
