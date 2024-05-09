@@ -52,6 +52,9 @@ bindsym XF86MonBrightnessUp exec light -T 1.1
 ## screenshots
 bindsym Print exec spectacle -c -r -b
 
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
