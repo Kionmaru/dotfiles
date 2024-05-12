@@ -91,14 +91,40 @@ oncall() {
 #   curl https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz -L --output - | gzip -cd - | tar xf - --strip-components=1 -C ${HOME}/.local/
 # }
 
-# Playing with new neovim config
+# Playing with new neovim config (now default env)
 knvim() {
   alias  nvim='NVIM_APPNAME="nvim-kickstart" nvim'
 }
 
+knvim
+
 unknvim() {
   unalias nvim
 }
+
+gopathremove() {
+  # Split PATH into array of elements
+  parts=(${(@s/:/)PATH})
+  # Remove elements identical to parameter
+  # NOTE: If it was ${~1}, it would match a pattern - wildcards possible
+  parts=(${parts:#${1}/bin})
+  # Re-assemble to PATH
+  export PATH=${(j/:/)${parts}}
+}
+
+gover() {
+  if [[ -v GOROOT ]]; then
+    gopathremove "${GOROOT}"
+    unset GOROOT;
+  fi;
+
+  go install golang.org/dl/go${1}@latest && \
+  go${1} download && \
+  export GOROOT="$(go${1} env GOROOT)" && \
+  export PATH="${GOROOT}/bin:${PATH}" && \
+}
+
+
 # >>> mamba initialize >>>
 # Well, I've modified it a bit...
 # !! Contents within this block are NO LONGER managed by 'mamba init' !!
