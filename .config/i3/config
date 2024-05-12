@@ -52,9 +52,6 @@ bindsym XF86MonBrightnessUp exec light -T 1.1
 ## screenshots
 bindsym Print exec spectacle -c -r -b
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -206,7 +203,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3status -c ~/.config/i3/i3status.conf
 }
 
 # Lastly, include any machine-specific i3 files (allow for snowflake customization)
