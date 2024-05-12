@@ -4,6 +4,8 @@
 Well, here's some stuff.
 
 ### about:config
+Note: These may not be necessary. Try installing the appropriate drivers/libraries and then restarting firefox. Remember to _reload_ about:support, the damn thing caches through firefox restarts.
+
 1. Check `gfx.webrender.all` and set it to true.
 1. Check `media.ffmpeg.vaapi.enabled` and set it to true.
 1. Do _not_ set `layers.acceleration.force-enabled`, this was for GL stuff which is deprecated by WebRender.
