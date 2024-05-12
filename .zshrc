@@ -118,8 +118,11 @@ gover() {
     unset GOROOT;
   fi;
 
-  go install golang.org/dl/go${1}@latest && \
-  go${1} download && \
+  if [[ ! -e /home/raven/sdk/go${1}/bin/go ]]; then
+    go install golang.org/dl/go${1}@latest && \
+    go${1} download && \
+  fi;
+
   export GOROOT="$(go${1} env GOROOT)" && \
   export PATH="${GOROOT}/bin:${PATH}" && \
 }
