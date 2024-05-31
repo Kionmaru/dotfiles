@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export XDG_CONFIG_HOME=~/.raven/
+export TMPDIR=~/.raven
+discord
