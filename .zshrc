@@ -91,17 +91,6 @@ oncall() {
 #   curl https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz -L --output - | gzip -cd - | tar xf - --strip-components=1 -C ${HOME}/.local/
 # }
 
-# Playing with new neovim config (now default env)
-knvim() {
-  alias  nvim='NVIM_APPNAME="nvim-kickstart" nvim'
-}
-
-knvim
-
-unknvim() {
-  unalias nvim
-}
-
 gopathremove() {
   # Split PATH into array of elements
   parts=(${(@s/:/)PATH})

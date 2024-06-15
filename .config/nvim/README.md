@@ -2,7 +2,8 @@
 
 ## Introduction
 
-->rvn<- I cloned this from https://github.com/dam9000/kickstart-modular.nvim/commit/1ac273484175782ae3412ceed9ad635b6ea0a50a
+->rvn<- I cloned this from [dam9000/kickstart.nvim](https://github.com/dam9000/kickstart-modular.nvim/commit/1ac273484175782ae3412ceed9ad635b6ea0a50a)
+->rvn<- I updated things against 01a18a193dfa1d5837faf0df669f1b06f4301f78... excluding a bunch of nitpicky text upgrades & fixing a couple experience things I disliked.
 
 diff against that commit to see my changes.
 
