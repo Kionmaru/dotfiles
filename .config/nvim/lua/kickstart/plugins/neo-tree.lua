@@ -15,7 +15,6 @@ return {
   },
   opts = {
     filesystem = {
-      -- TODO: Consider https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1247
       hijack_netrw_behavior = 'disabled',
       window = {
         mappings = {
