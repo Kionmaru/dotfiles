@@ -216,6 +216,8 @@ return {
         -- For ansible.. ->rvn<-
         'ansible-lint',
         'ansible-language-server',
+        -- For docker stuffs ->rvn<-
+        'hadolint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
