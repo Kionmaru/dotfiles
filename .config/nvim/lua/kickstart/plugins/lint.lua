@@ -53,6 +53,8 @@ return {
           -- https://github.com/mfussenegger/nvim-lint/issues/569
           -- require('lint').try_lint(nil, { ignore_errors = true })
           require('lint').try_lint()
+          require('mini.trailspace').trim()
+          require('mini.trailspace').trim_last_lines()
         end,
       })
     end,

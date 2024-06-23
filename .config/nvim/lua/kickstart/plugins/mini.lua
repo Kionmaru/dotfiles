@@ -17,6 +17,9 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- Automatically strip trailing whitespace
+      require('mini.trailspace').setup()
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
