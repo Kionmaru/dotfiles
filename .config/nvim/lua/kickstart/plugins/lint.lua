@@ -50,11 +50,14 @@ return {
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
-          -- https://github.com/mfussenegger/nvim-lint/issues/569
-          require('lint').try_lint(nil, { ignore_errors = true })
-          -- require('lint').try_lint()
-          require('mini.trailspace').trim()
-          require('mini.trailspace').trim_last_lines()
+          local buf = vim.api.nvim_win_get_buf(0)
+          if vim.bo[buf].modifiable == true then
+            -- https://github.com/mfussenegger/nvim-lint/issues/569
+            require('lint').try_lint(nil, { ignore_errors = true })
+            -- require('lint').try_lint()
+            require('mini.trailspace').trim()
+            require('mini.trailspace').trim_last_lines()
+          end
         end,
       })
     end,
