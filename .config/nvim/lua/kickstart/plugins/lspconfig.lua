@@ -204,7 +204,7 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
         -- For typescript.. ->rvn<-
-        'tsserver',
+        'ts_ls',
         'eslint_d',
         'prettierd',
         'biome', -- This one gets us lsp-signature output in ts.
